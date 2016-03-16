@@ -62,6 +62,20 @@ The `sonarqube::plugin` defined type can be used to install SonarQube plugins. N
       version    => '2.10',
       notify     => Service['sonar'],
     }
+
+Plugins can also be installed in bulk using hiera:
+
+    ---
+    sonarqube::params::plugins:
+      sonar-findbugs-plugin:
+        version: 3.3
+      sonar-javascript-plugin:
+        version: 2.11
+        groupid: org.sonarsource.javascript
+
+And called in puppet using the same defined type, making sure you `include sonarqube::params`
+
+    sonarqube::plugin { $sonarqube::params::plugins: }
     
 
 ## Security Configuration
