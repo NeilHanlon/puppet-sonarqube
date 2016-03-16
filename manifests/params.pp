@@ -1,5 +1,5 @@
 # Class: sonarqube::params
-class sonarqube::params ($plugins) {
+class sonarqube::params ($plugins={}) {
 
   # calculate in what folder is the binary to use for this architecture
   $arch1 = $::kernel ? {
